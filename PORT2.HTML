@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editkaro.in Portfolio | Professional Video Editing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff4d4d;
+            --background-color: #121212;
+            --surface-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            --text-secondary-color: #cccccc;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* General Styling & Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animated-section {
+            opacity: 0;
+        }
+
+        .animated-section.animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animated-list-item {
+            opacity: 0;
+        }
+
+        .animated-list-item.animate {
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        /* Header with Enhanced Gradient & Style */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #4a0e0e, var(--background-color));
+            padding: 30px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+        
+        /* Navigation Buttons with Active State */
+        nav {
+            margin-top: 15px;
+        }
+
+        nav button {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--primary-color);
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        nav button:hover, nav button.active {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .about p {
+            max-width: 900px;
+            margin: auto;
+            line-height: 1.8;
+            color: var(--text-secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .about .info {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about .info div {
+            background: var(--surface-color);
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: var(--text-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .experience ul {
+            list-style-type: none; /* Removed default list style */
+            max-width: 800px;
+            margin: auto;
+            padding-left: 0; /* Adjusted padding for new list style */
+            color: var(--text-secondary-color);
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+        
+        .experience ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .experience ul li::before {
+            content: '✓'; /* Custom checkmark */
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .projects .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .projects .item {
+            background: var(--surface-color);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .projects .item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+        }
+
+        .projects h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .projects p {
+            color: var(--text-secondary-color);
+            font-size: 1rem;
+        }
+
+        /* Enhanced Portfolio Section */
+        #portfolio-section {
+            background-color: var(--background-color);
+        }
+
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: var(--surface-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card a {
+            text-decoration: none; /* Removed underline from links */
+            display: block;
+            color: inherit;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 77, 77, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .card .card-content {
+            padding: 15px;
+        }
+
+        .card h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .contact .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            section { padding: 40px 15px; }
+            header h1 { font-size: 2rem; }
+            section h2 { font-size: 1.8rem; }
+            .about p, .experience ul { font-size: 1rem; }
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            nav { display: flex; justify-content: center; flex-wrap: wrap; }
+            nav button { padding: 8px 16px; font-size: 0.9rem; }
+            .about .info { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎬 Editkaro.in</h1>
+        <nav id="filter-nav">
+            <button class="active" onclick="filterSelection('all', this)">All</button>
+            <button onclick="filterSelection('short-form', this)">Short-form</button>
+            <button onclick="filterSelection('long-form', this)">Long-form</button>
+            <button onclick="filterSelection('gaming', this)">Gaming</button>
+            <button onclick="filterSelection('ads', this)">Ads</button>
+        </nav>
+    </header>
+
+    <section class="about animated-section" id="about">
+        <h2>About Editkaro.in</h2>
+        <p>
+            Based in the heart of Bengaluru, Editkaro.in is a premier social media marketing and video editing agency with over 5 years of industry experience. We specialize in creating dynamic, engaging content that captures attention and drives results. Our team has delivered more than 1,000 projects for clients worldwide, from global enterprises to innovative local startups, helping brands grow through impactful visuals and compelling storytelling.
+        </p>
+        <div class="info">
+            <div><strong>Experience:</strong> 5+ Years</div>
+            <div><strong>Projects Delivered:</strong> 1000+</div>
+            <div><strong>Based In:</strong> Bengaluru, India</div>
+        </div>
+    </section>
+
+    <section class="experience animated-section" id="experience">
+        <h2>Our Experience</h2>
+        <ul>
+            <li class="animated-list-item">Collaborated with <strong>MTV India</strong> on viral social media campaigns (2019).</li>
+            <li class="animated-list-item">Partnered with <strong>Amazon India</strong> for high-impact promotional ads (2020).</li>
+            <li class="animated-list-item">Created thrilling football highlight reels for major <strong>La Liga fan pages</strong> (2021).</li>
+            <li class="animated-list-item">Edited conversion-focused e-commerce video ads for <strong>Flipkart</strong> (2022).</li>
+            <li class="animated-list-item">Managed end-to-end YouTube content editing for <strong>top Indian creators</strong> (2023).</li>
+        </ul>
+    </section>
+
+    <section class="projects animated-section" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="item">
+                <h3>Netflix India Promo Cuts</h3>
+                <p>Crafted cinematic promotional edits for Netflix Originals, boosting series engagement across India.</p>
+            </div>
+            <div class="item">
+                <h3>Red Bull Adrenaline Rush</h3>
+                <p>Designed high-energy reels showcasing extreme sports for Red Bull’s social media domination.</p>
+            </div>
+            <div class="item">
+                <h3>Adidas Sneaker Launch</h3>
+                <p>Produced and edited a viral ad campaign for the Adidas ‘FutureStep’ sneaker launch in 2022.</p>
+            </div>
+            <div class="item">
+                <h3>Swiggy Food Stories</h3>
+                <p>Created mouth-watering short-form videos for Swiggy's Instagram, driving app engagement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio-section" class="animated-section">
+        <h2>Our Work</h2>
+        <div class="portfolio">
+            <div class="card short-form ads">
+                <a href="https://youtu.be/HXFkg0vwLpQ" target="_blank">
+                    <img src="https://i.ytimg.com/vi/HXFkg0vwLpQ/hq720.jpg" alt="Fashion Reel Ad Thumbnail">
+                    <div class="card-content">
+                        <h3>Fashion Reel Ad</h3>
+                        <p>Short-form / Ads</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card short-form gaming">
+                <a href="https://youtu.be/ZkbNvIAkwm8" target="_blank">
+                    <img src="https://i.ytimg.com/vi/ZkbNvIAkwm8/hq720.jpg" alt="Gaming Highlights Thumbnail">
+                    <div class="card-content">
+                        <h3>Gaming Highlights</h3>
+                        <p>Short-form / Gaming</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card long-form gaming">
+                <a href="https://youtu.be/_andUUbgzec" target="_blank">
+                    <img src="https://i.ytimg.com/vi/_andUUbgzec/hq720.jpg" alt="Gaming Walkthrough Thumbnail">
+                    <div class="card-content">
+                        <h3>Gaming Walkthrough</h3>
+                        <p>Long-form / Gaming</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card short-form ads">
+                <a href="https://youtu.be/J1_N9Tuhg4s" target="_blank">
+                    <img src="https://i.ytimg.com/vi/J1_N9Tuhg4s/hq720.jpg" alt="Dance Studio Promo Thumbnail">
+                    <div class="card-content">
+                        <h3>Dance Studio Promo</h3>
+                        <p>Short-form / Ads</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card long-form">
+                <a href="https://youtu.be/V4ZaGyXC6KA" target="_blank">
+                    <img src="https://i.ytimg.com/vi/V4ZaGyXC6KA/hq720.jpg" alt="Travel Vlog Edit Thumbnail">
+                    <div class="card-content">
+                        <h3>Travel Vlog Edit</h3>
+                        <p>Long-form</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card short-form gaming">
+                <a href="https://youtu.be/en253kW4POA" target="_blank">
+                    <img src="https://i.ytimg.com/vi/en253kW4POA/hq720.jpg" alt="Esports Montage Thumbnail">
+                    <div class="card-content">
+                        <h3>Esports Montage</h3>
+                        <p>Short-form / Gaming</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact animated-section" id="contact">
+        <h2>Get In Touch</h2>
+        <div class="info">
+            <div><strong>Email:</strong> contact@editkaro.in</div>
+            <div><strong>Phone:</strong> +91 98765 43210</div>
+            <div><strong>Office Hours:</strong> Mon - Sat, 10 AM - 7 PM</div>
+            <div><strong>Location:</strong> Bengaluru, Karnataka</div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Editkaro.in | Crafted with ❤ in Dark Mode
+    </footer>
+
+    <script>
+        function filterSelection(category, element) {
+            let currentActive = document.querySelector("#filter-nav .active");
+            if (currentActive) {
+                currentActive.classList.remove("active");
+            }
+            element.classList.add("active");
+
+            let cards = document.getElementsByClassName('card');
+            if (category === 'all') category = '';
+            
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].style.transition = 'opacity 0.3s';
+                cards[i].style.opacity = '0';
+                setTimeout(() => {
+                    if (cards[i].className.indexOf(category) > -1) {
+                        cards[i].style.display = "block";
+                        setTimeout(() => cards[i].style.opacity = '1', 20);
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }, 300);
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            filterSelection('all', document.querySelector("#filter-nav .active"));
+
+            const animatedSections = document.querySelectorAll('.animated-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        if (entry.target.classList.contains('experience')) {
+                            const listItems = entry.target.querySelectorAll('.animated-list-item');
+                            listItems.forEach((item, index) => {
+                                item.style.animationDelay = `${index * 0.15}s`;
+                                item.classList.add('animate');
+                            });
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            animatedSections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            window.filterSelection = filterSelection;
+        });
+    </script>
+</body>
+</html>
